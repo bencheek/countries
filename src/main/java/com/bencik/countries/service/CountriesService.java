@@ -3,7 +3,6 @@ package com.bencik.countries.service;
 import com.bencik.countries.dao.CountriesDao;
 import com.bencik.countries.exception.CountryNotFoundException;
 import com.bencik.countries.exception.RouteNotFoundException;
-import com.sun.istack.internal.NotNull;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class CountriesService {
      * @throws CountryNotFoundException if country code does not exist
      */
     @Cacheable("routings")
-    public List<String> findRoute(@NotNull String origin, @NotNull String destination) {
+    public List<String> findRoute(String origin, String destination) {
 
         if (!countriesDao.countryExists(origin)) {
             throw new CountryNotFoundException(origin);
